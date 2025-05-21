@@ -1,5 +1,5 @@
 ---
-title: "Life Satisfaction and Life Expectancy Report"
+title: "Do Europe and Asia experience similar trends in Life Expectancy and Life Satisfaction?"
 author: "Often Imitated, never depulicated"
 format:
   pdf:
@@ -22,6 +22,123 @@ execute:
 
 # Results
 
+**This part should be deleted after merging**
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(scales)
+raw_data <- read_csv("life-satisfaction-vs-life-expectancy.csv")
+
+region_map <- raw_data %>%
+  filter(!is.na(`World regions according to OWID`)) %>%
+  distinct(Entity, `World regions according to OWID`) %>%
+  deframe() 
+
+filled_region <- raw_data %>%
+  mutate(
+    `World regions according to OWID` = coalesce(
+      `World regions according to OWID`,
+      region_map[Entity]
+    )
+  )
+
+
+cleaned <- filled_region %>%
+  mutate(
+    `Life expectancy (years)` = `Life expectancy - Sex: all - Age: 0 - Variant: estimates`
+  ) %>%
+  select(-`Life expectancy - Sex: all - Age: 0 - Variant: estimates`) %>%
+  filter(
+    !is.na(`Life expectancy (years)`),
+    !is.na(`Cantril ladder score`)
+  )
+
+cleaned %>%
+  filter(`World regions according to OWID` %in% c("Europe", "Asia")) %>%
+  write_csv("europe_asia.csv")
+
+```
+
+1. Calculate population-weighted regional averages
+
+```{r}
+# Load filtered dataset that includes only Europe and Asia
+europe_asia <- read_csv("europe_asia.csv")
+
+# Compute population-weighted yearly averages for each region
+region_avg <- europe_asia %>%
+  
+  # Remove any missing values in key variables
+  filter( 
+    !is.na(`Life expectancy (years)`),
+    !is.na(`Cantril ladder score`),
+    !is.na(`Population (historical)`),
+    !is.na(Year)
+  ) %>%
+  group_by(`World regions according to OWID`, Year) %>%
+  summarise( 
+    
+    # Weighted mean life expectancy using historical population
+    `Life expectancy (years)` = weighted.mean(
+      `Life expectancy (years)`, `Population (historical)`, na.rm = TRUE),
+    
+    # Weighted mean life satisfaction using same population weights
+    `Cantril ladder score` = weighted.mean(
+      `Cantril ladder score`, `Population (historical)`, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+2. Plot trends and label final-year positions
+
+```{r}
+# Identify the most recent year (2023) for each region to use as label position
+label_data <- region_avg %>%
+  group_by(`World regions according to OWID`) %>%
+  filter(Year == max(Year)) %>%
+  ungroup()
+
+# Create line plot showing trend of weighted averages for Asia and Europe
+ggplot(region_avg, aes(
+  x = `Cantril ladder score`,
+  y = `Life expectancy (years)`,
+  group = `World regions according to OWID`,
+  color = Year
+)) +
+  geom_path(linewidth = 1.2) +   # Line to show trajectory
+  geom_point(size = 2) +         # Dots for each year
+  scale_color_viridis_c() +      # Color gradient for year
+  geom_text(                     
+    data = label_data,           # Add region labels at final year
+    aes(label = `World regions according to OWID`),
+    color = "black",
+    vjust = -1
+  ) +
+  
+  # Add padding on x-axis and y-axis
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.1))) + 
+  scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) + 
+  labs(
+    title = "Yearly Averages: Life Satisfaction vs Life Expectancy",
+    x = "Life Satisfaction (Cantril ladder score)",
+    y = "Life Expectancy (years)",
+    color = "Year"
+  ) +
+  scale_color_viridis_c(
+  breaks = c(2011, 2014, 2017, 2020, 2023)  # Customize colorbar ticks
+) +
+  theme_minimal()
+```
+
+Result:
+
+Figure presents population-weighted yearly averages of life satisfaction and life expectancy in Asia and Europe from 2011 to 2023. We use population-weighted averages because this method gives more weight to countries with larger populations. This approach provides a more accurate representation of how the average individual in each region experiences changes in their well-being and life expectancy.
+
+Europe consistently reported higher levels for both indicators. Its life expectancy followed a steady upward trend until 2020, with a slight drop afterward, while life satisfaction showed stable growth throughout the period, with only a minor decrease in 2011. In contrast, Asia displayed more fluctuated trends, with a significant turning point in 2019 where both life satisfaction and life expectancy experienced notable changes.
+
+Based on these patterns, Europe has developed in a way where improvements in health correspond with steady or increasing satisfaction levels. In contrast, Asia's data shows a different relationship between longer life spans and overall satisfaction, which might be explained by factors such as uneven economic growth, social pressures, or differences across its large and diverse population. The different patterns observed between these two regions suggest distinct relationships between quality of life and overall well-being.
 
 # Discussion, Conclusion and Recommendations
 
