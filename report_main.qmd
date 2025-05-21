@@ -1,0 +1,35 @@
+---
+title: "Life Satisfaction and Life Expectancy Report"
+author: "Often Imitated, never depulicated"
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    fig-cap-location: bottom
+    link-citations: true
+execute:
+  echo: false
+---
+
+# Executive Summary  
+*(To be written after all parts are complete)*
+
+# Introduction  
+
+
+# Methodology  
+
+
+# Global Trends  
+
+
+# Regional Comparison  
+
+
+# Australia-Focused Analysis  
+
+
+# Discussion & Conclusion  
+
+
+# References  
