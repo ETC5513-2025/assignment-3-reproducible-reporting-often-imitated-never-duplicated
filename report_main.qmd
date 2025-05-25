@@ -8,7 +8,7 @@ format:
     fig-cap-location: bottom
     link-citations: true
 execute:
-  echo: false
+  echo: true
 ---
 ```{r}
 #| echo: false
