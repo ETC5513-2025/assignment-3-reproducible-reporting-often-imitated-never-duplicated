@@ -10,6 +10,19 @@ format:
 execute:
   echo: false
 ---
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(scales)
+```
+
+
+
+
 
 # Executive Summary  
 *(To be written after all parts are complete)*
@@ -18,6 +31,90 @@ execute:
 
 
 # Methodology  
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+raw_data <- read_csv("life-satisfaction-vs-life-expectancy.csv")
+
+region_map <- raw_data %>%
+  filter(!is.na(`World regions according to OWID`)) %>%
+  distinct(Entity, `World regions according to OWID`) %>%
+  deframe() 
+
+filled_region <- raw_data %>%
+  mutate(`World regions according to OWID` =
+           coalesce(`World regions according to OWID`,
+                    region_map[Entity]))
+
+
+cleaned <- filled_region %>%
+  mutate(`Life expectancy (years)` = `Life expectancy - Sex: all - Age: 0 - Variant: estimates`) %>%
+  select(-`Life expectancy - Sex: all - Age: 0 - Variant: estimates`) %>%
+  filter(!is.na(`Life expectancy (years)`), !is.na(`Cantril ladder score`))
+
+cleaned %>%
+  filter(`World regions according to OWID` %in% c("Europe", "Asia")) %>%
+  write_csv("europe_asia.csv")
+
+europe_asia <- read_csv("europe_asia.csv")
+```
+
+Our data was sourced from the online data repository, Our World in Data (OWID). Specifically, we used the [Life satisfaction vs. life expectancy](https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy) dataset. This dataset tracks two main variables for countries and geographic regions, those being life expectancy (measured in years) and life satisfaction (measured on a 1-10 scale using the Cantril Ladder score). These variables are tracked on a yearly basis, alongside population statistics where appropriate.
+
+This dataset suffers from a degree of sparsity, particularly regarding the Cantril Ladder score, as several observations for many countries were missing. The data was filtered such that only observations containing both metrics were present. From there, Europe and Asia stood out as regions of interest for further analysis. Further filtering the dataset for observations containing only the Europe or Asia region variable resulted in the final dataset used for analysis.
+
+```{r}
+#| label: fig-table-asia-europe
+#| fig-cap: "Europe and Asia filtered dataset"
+head(europe_asia)
+```
+
+
+Initial inspection of the data was performed using a distribution curve and a density map of both variables in 2023. @fig-dist-asia-europe displays an immediate disparity between Europe and Asia for both life satisfaction and life expectancy. For both variables, Europe displays more countries with preferable results when compared to Asia. This is not to say that Asia does not contain comparable countries @fig-dens-asia-europe shows that while European nations are clustered closer together in a region of high life satisfaction and life expectancy, there are Asian countries present in *the same region*. The density map merely shows that while there are comparable Asian countries, the tighter clustering of European countries in this region is indicative of greater consistency between nations.
+
+```{r}
+#| label: fig-dist-asia-europe
+#| fig-cap: "Country-Level Distribution Curves of Life Satisfaction and Life Expectancy in Asia and Europe (2023)"
+#| fig-pos: "H"
+long_data <- europe_asia %>%
+  filter(Year == 2023) %>%
+  select(`World regions according to OWID`, 
+         `Life expectancy (years)`, 
+         `Cantril ladder score`) %>%
+pivot_longer(
+  cols = c(`Life expectancy (years)`, `Cantril ladder score`),
+  names_to = "Variable",
+  values_to = "Value")
+  
+ggplot(long_data, aes(x = Value, fill = `World regions according to OWID`)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~ Variable, ncol = 1, scales = "free") +
+  labs(title = "Distribution of Life Expectancy and Life Satisfaction (2023)",
+    fill = "Region",
+    x = NULL,
+    y = "Density") +
+    theme_minimal()
+```
+
+```{r}
+#| label: fig-dens-asia-europe
+#| fig-cap: "Country-Level Density Map of Life Satisfaction and Life Expectancy in Asia and Europe (2023)"
+#| fig-pos: "H"
+  ggplot(europe_asia %>% filter(Year == 2023), 
+         aes(x = `Cantril ladder score`, 
+             y = `Life expectancy (years)`)) +
+    geom_point(aes(color = `World regions according to OWID`), size = 2) +
+    stat_density_2d(aes(fill = `World regions according to OWID`), 
+                    geom = "polygon", alpha = 0.2, color = NA, show.legend = FALSE) +
+    labs(title = "Density Map for Europe and Asia (2023)",
+         x = "Life Satisfaction",
+         y = "Life Expectancy") +
+    theme_minimal()
+
+```
+
 
 
 # Results
@@ -32,42 +129,7 @@ Overall, the two regions do not appear to follow similar trends: Europe shows a 
 
 **This part should be deleted after merging**
 
-```{r}
-library(tidyverse)
-library(ggplot2)
-library(dplyr)
-library(scales)
-raw_data <- read_csv("life-satisfaction-vs-life-expectancy.csv")
 
-region_map <- raw_data %>%
-  filter(!is.na(`World regions according to OWID`)) %>%
-  distinct(Entity, `World regions according to OWID`) %>%
-  deframe() 
-
-filled_region <- raw_data %>%
-  mutate(
-    `World regions according to OWID` = coalesce(
-      `World regions according to OWID`,
-      region_map[Entity]
-    )
-  )
-
-
-cleaned <- filled_region %>%
-  mutate(
-    `Life expectancy (years)` = 
-      `Life expectancy - Sex: all - Age: 0 - Variant: estimates`
-  ) %>%
-  select(-`Life expectancy - Sex: all - Age: 0 - Variant: estimates`) %>%
-  filter(
-    !is.na(`Life expectancy (years)`),
-    !is.na(`Cantril ladder score`)
-  )
-
-cleaned %>%
-  filter(`World regions according to OWID` %in% c("Europe", "Asia")) %>%
-  write_csv("europe_asia.csv")
-```
 
 1. Calculate population-weighted regional averages
 
