@@ -30,45 +30,6 @@ As shown in @fig-asia-europe-2011-2023, most countries have improved or maintain
 
 Overall, the two regions do not appear to follow similar trends: Europe shows a more consistent alignment between longevity and well-being, while Asia’s trajectory is less stable and more fragmented.
 
-**This part should be deleted after merging**
-
-```{r}
-library(tidyverse)
-library(ggplot2)
-library(dplyr)
-library(scales)
-raw_data <- read_csv("life-satisfaction-vs-life-expectancy.csv")
-
-region_map <- raw_data %>%
-  filter(!is.na(`World regions according to OWID`)) %>%
-  distinct(Entity, `World regions according to OWID`) %>%
-  deframe() 
-
-filled_region <- raw_data %>%
-  mutate(
-    `World regions according to OWID` = coalesce(
-      `World regions according to OWID`,
-      region_map[Entity]
-    )
-  )
-
-
-cleaned <- filled_region %>%
-  mutate(
-    `Life expectancy (years)` = 
-      `Life expectancy - Sex: all - Age: 0 - Variant: estimates`
-  ) %>%
-  select(-`Life expectancy - Sex: all - Age: 0 - Variant: estimates`) %>%
-  filter(
-    !is.na(`Life expectancy (years)`),
-    !is.na(`Cantril ladder score`)
-  )
-
-cleaned %>%
-  filter(`World regions according to OWID` %in% c("Europe", "Asia")) %>%
-  write_csv("europe_asia.csv")
-```
-
 1. Calculate population-weighted regional averages
 
 ```{r}
