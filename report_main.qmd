@@ -11,19 +11,10 @@ execute:
   echo: false
 ---
 
-# Executive Summary  
+# Executive Summary
+
 *(To be written after all parts are complete)*
 
-# Introduction  
+# Introduction
 
-
-# Methodology  
-
-
-# Results
-
-
-# Discussion, Conclusion and Recommendations
-
-
-# References  
+With advancements in global medicine, public health, and living standards, life expectancy has continued to reach new heights. It is often regarded as a key indicator of people’s well-being. However, the relationship between life expectancy and life satisfaction may vary across countries and regions, influenced by differences in cultural values, economic development, and societal expectations.This report explores the question: Do Europe and Asia experience similar trends in life expectancy and life satisfaction? To address this question, we analyze publicly available data from [Our World in Data](https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy), which includes standardized country-level measures of life expectancy and self-reported life satisfaction. Our analysis focuses on Europe and Asia. By cleaning and analyzing data, we discuss the visualization results and key findings.
