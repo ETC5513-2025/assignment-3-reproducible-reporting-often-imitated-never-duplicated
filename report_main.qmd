@@ -121,7 +121,7 @@ Europe consistently reported higher values for both indicators. Life expectancy 
 
 As shown in @fig-asia-europe-2011-2023, most countries have improved or maintained both measures between 2011 and 2023. However, some Asian countries continue to lag in life satisfaction, highlighting a need for more balanced development that links well-being with longevity.
 
-Overall, the two regions do not appear to follow similar trends: Europe shows a more consistent alignment between longevity and well-being, while Asia’s trajectory is less stable and more fragmented.
+Overall, the two regions do not appear to follow similar trends: Europe shows a more consistent alignment between longevity and well-being, while Asia’s trajectory is less stable and more fragmented. However, by 2023, both regions show a clear increase in both indicators.
 
 1.  Calculate population-weighted regional averages
 
