@@ -9,98 +9,98 @@ output-file: "ETC5513_Assignment3_Slides.html"
 
 ## Table of Contents {.unnumbered}
 
-- Executive Summary  
-- Introduction  
-- Methodology  
-- Global Trends  
-- Regional Comparison  
-- Australia-Focused Analysis  
-- Results  
-- Discussion & Conclusion  
-- References  
+-   Executive Summary\
+-   Introduction\
+-   Methodology\
+-   Global Trends\
+-   Regional Comparison\
+-   Australia-Focused Analysis\
+-   Results\
+-   Discussion & Conclusion\
+-   References
 
----
+------------------------------------------------------------------------
 
 ## Executive Summary
 
-*(To be completed)*  
+*(To be completed)*\
 Provide a concise overview of your findings in 3–4 sentences.
 
----
+------------------------------------------------------------------------
 
 ## Introduction
 
-*(To be completed)*  
+*(To be completed)*\
 Introduce the topic, motivation, and data source.
 
----
+------------------------------------------------------------------------
 
 ## Methodology
 
-- Data Source: Our World in Data  
-- Variables: Life Expectancy, Life Satisfaction  
-- Filtering and cleaning steps...  
-- Tools: R, ggplot2, dplyr  
+-   Data Source: Our World in Data\
+-   Variables: Life Expectancy, Life Satisfaction\
+-   Filtering and cleaning steps...\
+-   Tools: R, ggplot2, dplyr
 
----
+------------------------------------------------------------------------
 
 ## Global Trends
 
-- What patterns are seen worldwide?
-- Outliers?
-- Correlation?
+-   What patterns are seen worldwide?
+-   Outliers?
+-   Correlation?
 
----
+------------------------------------------------------------------------
 
 ## Regional Comparison
 
-- Compare regions (e.g., Europe vs Asia)  
-- Visualize median scores or distributions  
-- Key takeaways
+-   Compare regions (e.g., Europe vs Asia)\
+-   Visualize median scores or distributions\
+-   Key takeaways
 
----
+------------------------------------------------------------------------
 
 ## Australia-Focused Analysis
 
-- Analyze Australia in context  
-- Compare to NZ, Japan, etc.  
-- Historical trends if available
+-   Analyze Australia in context\
+-   Compare to NZ, Japan, etc.\
+-   Historical trends if available
 
----
+------------------------------------------------------------------------
 
 ## Results
 
 *(≤ 200 words summary of key findings)*
 
----
+------------------------------------------------------------------------
 
 ## Discussion & Conclusion
 
-- Key insights  
-- Possible explanations  
-- Limitations  
-- Policy or social implications
+-   Key insights\
+-   Possible explanations\
+-   Limitations\
+-   Policy or social implications
 
----
+------------------------------------------------------------------------
 
 ## Recommendations
 
-- What could be done?
-- Suggestions for future research
+-   What could be done?
+-   Suggestions for future research
 
----
+------------------------------------------------------------------------
 
 ## References
 
-- Our World in Data. (n.d.). *Life satisfaction vs. life expectancy*. https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy  
-- *(Add more as needed)*
+-   Our World in Data. (n.d.). *Life satisfaction vs. life expectancy*. https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy\
+-   *(Add more as needed)*
 
----
+------------------------------------------------------------------------
 
 ## Thank You!
 
-**Questions?**  
-Group: *Often imitated, never duplicated*  
-- TingTing Wu  
-- Yilin Zhang  
+**Questions?**\
+Group: *Often imitated, never duplicated*\
+- TingTing Wu\
+- Yilin Zhang\
 - James Gray
