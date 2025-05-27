@@ -19,29 +19,36 @@ library(scales)
 
 ## Table of Contents {.unnumbered}
 
-- Executive Summary  
-- Introduction  
-- Methodology  
-- Global Trends  
-- Regional Comparison  
-- Australia-Focused Analysis  
-- Results  
-- Discussion & Conclusion  
-- References  
+-   Executive Summary\
+-   Introduction\
+-   Methodology\
+-   Global Trends\
+-   Regional Comparison\
+-   Australia-Focused Analysis\
+-   Results\
+-   Discussion & Conclusion\
+-   References
 
----
+------------------------------------------------------------------------
 
 ## Executive Summary
 
-This report investigates trends in life expectancy and life satisfaction in Europe and Asia from 2011 to 2023. Europe consistently outperformed Asia in the two indicators, and the differences among countries were smaller. However, there have been significant fluctuations and differences in Asian countries. Some countries lag behind in both indicators, while in others, although life expectancy has risen, the happiness index of life lags behind. The research results emphasize the importance of the all-round development that balances longevity and overall health.
+-   Analyzed trends in life expectancy and life satisfaction from 2011 to 2023.
+-   Europe performed consistently well in both indicators.
+-   Asia showed greater variation, some countries lag behind in the two indicators.
+-   Balanced improvement in Life Expectancy and life satisfaction is essential
 
----
+------------------------------------------------------------------------
 
 ## Introduction
 
-With advancements in global medicine, public health, and living standards, life expectancy has continued to reach new heights. It is often regarded as a key indicator of people’s well-being. However, the relationship between life expectancy and life satisfaction may vary across countries and regions, influenced by differences in cultural values, economic development, and societal expectations.This report explores the question: Do Europe and Asia experience similar trends in life expectancy and life satisfaction? To address this question, we analyze publicly available data from [Our World in Data](https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy), which includes standardized country-level measures of life expectancy and self-reported life satisfaction. Our analysis focuses on Europe and Asia. By cleaning and analyzing data, we discuss the visualization results and key findings.
+With advancements in global medicine, public health, and living standards, life expectancy has continued to reach new heights. It is often regarded as a key indicator of people’s well-being. However, the relationship between life expectancy and life satisfaction may vary across countries and regions, influenced by differences in cultural values, economic development, and societal expectations.
 
----
+-   Research question: Do Europe and Asia experience similar trends in life expectancy and life satisfaction?
+
+-   Data Source: [Our World in Data](https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy)
+
+------------------------------------------------------------------------
 
 ## Methodology
 
@@ -80,7 +87,7 @@ europe_asia <- read_csv("europe_asia.csv")
 head(europe_asia)
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r}
 #| label: fig-dist-asia-europe
@@ -106,7 +113,7 @@ ggplot(long_data, aes(x = Value, fill = `World regions according to OWID`)) +
     theme_minimal()
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r}
 #| label: fig-dens-asia-europe
@@ -198,7 +205,7 @@ ggplot(region_avg, aes(
   theme_minimal()
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r}
 #| echo: false
@@ -237,38 +244,48 @@ ggplot(filtered_2years, aes(
   guides(size = "none")       # Hide size legend to reduce clutter
 ```
 
----
+------------------------------------------------------------------------
 
 ## Discussion & Conclusion
 
-The central question in this report is whether there are similar trends in life expectancy and life satisfaction between Europe and Asia. By analyzing the population-weighted data from 2011 to 2023, we found that the overall quality of life in both regions has improved over time. However, Europe countries have made consistent progress in terms of health and subjective well-being. They are closely clustered together, indicating relatively uniform regional development. In contrast, Asian countries showed greater differences and extreme values observed. Some of these countries performed well in both indicators, while others lagged significantly behind. These phenomena indicate that the differences in medical insurance policies, economic conditions and social support systems behind different regions may affect well-being outcomes. There are mostly high-welfare countries in Europe, which ensures its relatively stable life expectancy and high level of satisfaction. However, in Asia, the levels in various aspects vary greatly and there is certain room for improvement.
+-   The overall quality of life in both Europe and Asia has improved in recent years.
 
----
+-   European countries show steady progress in health and well-being, with more uniform development.
+
+-   Asian countries display wider variation, including some extreme cases.
+
+-   Differences in medical systems, economic conditions, and social support affect well-being outcomes.
+
+-   Most European countries follow high-welfare models, leading to stable life expectancy and satisfaction.
+
+-   In Asia, development levels vary greatly, with clear room for improvement.
+
+------------------------------------------------------------------------
 
 ## Recommendations
 
-Recommendations:
+-   Asian governments could consider using happiness indices in policy decisions.
 
--   Some governments in Asian countries should consider using the people's happiness index as an indicator for policy decisions to ensure that life expectancy and quality of life can be further improved.
+-   Strive to balance longevity with subjective well-being.
 
--   Future research can expand its scope to include other regions around the world and introduce more differences to explore causal relationships.
+-   Future research could expand to include other global regions and investigate potential causal relationships.
 
--   consider adding other variables such as occupational inequality, income inequality and educational level to help further explain the differences and propose more specific improvement measures.
+-   Consider including variables such as occupational inequality, income inequality and educational attainment.
 
----
+------------------------------------------------------------------------
 
 ## References
 
-- Our World in Data. (n.d.). *Life satisfaction vs. life expectancy*. https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy  
+-   Our World in Data. (n.d.). *Life satisfaction vs. life expectancy*. https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy
 
----
+------------------------------------------------------------------------
 
 ## Thank You!
 
-**Questions?**  
+**Questions?**
 
-Group: *Often imitated, never duplicated*  
+Group: *Often imitated, never duplicated*
 
-- TingTing Wu  
-- Yilin Zhang  
-- James Gray
+-   TingTing Wu\
+-   Yilin Zhang\
+-   James Gray
