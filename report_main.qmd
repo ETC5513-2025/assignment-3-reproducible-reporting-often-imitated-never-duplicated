@@ -12,13 +12,11 @@ execute:
 ---
 
 ```{r}
-#| echo: false
-#| message: false
-#| warning: false
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
 library(scales)
+library(knitr)
 ```
 
 # Executive Summary
@@ -32,9 +30,6 @@ With advancements in global medicine, public health, and living standards, life 
 # Methodology
 
 ```{r}
-#| echo: false
-#| message: false
-#| warning: false
 raw_data <- read_csv("life-satisfaction-vs-life-expectancy.csv")
 
 region_map <- raw_data %>%
@@ -62,12 +57,13 @@ europe_asia <- read_csv("europe_asia.csv")
 
 Our data was sourced from the online data repository, Our World in Data (OWID). Specifically, we used the [Life satisfaction vs. life expectancy](https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy) dataset. This dataset tracks two main variables for countries and geographic regions, those being life expectancy (measured in years) and life satisfaction (measured on a 1-10 scale using the Cantril Ladder score). These variables are tracked on a yearly basis, alongside population statistics where appropriate.
 
-This dataset suffers from a degree of sparsity, particularly regarding the Cantril Ladder score, as several observations for many countries were missing. The data was filtered such that only observations containing both metrics were present. From there, Europe and Asia stood out as regions of interest for further analysis. Further filtering the dataset for observations containing only the Europe or Asia region variable resulted in the final dataset used for analysis.
+This dataset suffers from a degree of sparsity, particularly regarding the Cantril Ladder score, as several observations for many countries were missing. The data was filtered such that only observations containing both metrics were present. From there, Europe and Asia stood out as regions of interest for further analysis. Further filtering the dataset for observations containing only the Europe or Asia region variable resulted in the final dataset used for analysis. An example of which can be seen in @fig-table-asia-europe.
 
 ```{r}
 #| label: fig-table-asia-europe
 #| fig-cap: "Europe and Asia filtered dataset"
-head(europe_asia)
+kable(head(europe_asia[, c("Entity", "Code", "Year", "Cantril ladder score", "Life expectancy (years)")]))
+
 ```
 
 Initial inspection of the data was performed using a distribution curve and a density map of both variables in 2023. @fig-dist-asia-europe displays an immediate disparity between Europe and Asia for both life satisfaction and life expectancy. For both variables, Europe displays more countries with preferable results when compared to Asia. This is not to say that Asia does not contain comparable countries @fig-dens-asia-europe shows that while European nations are clustered closer together in a region of high life satisfaction and life expectancy, there are Asian countries present in *the same region*. The density map merely shows that while there are comparable Asian countries, the tighter clustering of European countries in this region is indicative of greater consistency between nations.

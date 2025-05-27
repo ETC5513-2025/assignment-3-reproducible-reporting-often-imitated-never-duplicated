@@ -83,6 +83,12 @@ europe_asia <- read_csv("europe_asia.csv")
 #| fig-cap: "Europe and Asia filtered dataset"
 head(europe_asia[, c("Entity", "Code", "Year", "Cantril ladder score", "Life expectancy (years)")])
 ```
+Our dataset was cleaned to ensure all observations included the 'World regions according to OWID' variable, which was initially onle recorded once. 
+
+Our dataset was then filtered to contain only observations with values for both key metrics, ensuring that missing values did not undermine the analysis.
+
+
+
 
 Our dataset was cleaned to ensure all observations included the ‘World regions according to OWID’ variable, which was initially onle recorded once.
 
