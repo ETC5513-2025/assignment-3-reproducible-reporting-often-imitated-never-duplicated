@@ -207,45 +207,6 @@ ggplot(region_avg, aes(
 
 ---
 
-```{r}
-#| echo: false
-#| label: fig-asia-europe-2011-2023
-#| fig-cap: "Life Satisfaction and Life Expectancy in Asia and Europe (2011 vs 2023)"
-
-# Filter dataset to include only the years 2011 and 2023 for comparison
-filtered_2years <- europe_asia %>%
-  filter(Year %in% c(2011, 2023))
-
-# Create a faceted scatterplot comparing life satisfaction and life expectancy
-ggplot(filtered_2years, aes(
-  x = `Life expectancy (years)`,
-  y = `Cantril ladder score`,
-  color = `World regions according to OWID`,
-  size = `Population (historical)`
-)) +
-  geom_point(alpha = 0.6) +          # Draw points with some transparency
-  facet_wrap(~Year) +                # Create separate panels for each year
-  scale_size(range = c(2, 10)) +     # Control range of point sizes
-  scale_color_manual(values = c(     # Assign manual colors to regions
-    "Asia" = "#1ABC9C",
-    "Europe" = "#9B59B6"
-  )) +
-  labs(
-    title = "Life Satisfaction and Life Expectancy (2011 vs 2023)",
-    x = "Life Expectancy (Years)",
-    y = "Life Satisfaction",
-    color = "Region"
-  ) +
-  theme_minimal() +
-  theme(                                  # Centered bold title
-    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),  
-    plot.margin = margin(10, 10, 10, 10)  # Add margin around plot
-  ) +
-  guides(size = "none")       # Hide size legend to reduce clutter
-```
-
----
-
 ## Discussion & Conclusion
 
 - Overall quality of life has improved in both Europe and Asia.
