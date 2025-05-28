@@ -87,13 +87,6 @@ Our dataset was cleaned to ensure all observations included the 'World regions a
 
 Our dataset was then filtered to contain only observations with values for both key metrics, ensuring that missing values did not undermine the analysis.
 
-
-
-
-Our dataset was cleaned to ensure all observations included the ‘World regions according to OWID’ variable, which was initially onle recorded once.
-
-Our dataset was then filtered to contain only observations with values for both key metrics, ensuring that missing values did not undermine the analysis.
-
 ---
 
 ```{r}
