@@ -16,28 +16,7 @@ library(dplyr)
 library(scales)
 ```
 
-## Table of Contents {.unnumbered}
-
--   Executive Summary
--   Introduction
--   Methodology
--   Results
--   Discussion & Conclusion
--   Recommendations
--   References
-
-------------------------------------------------------------------------
-
-## Executive Summary
-
--   Analyzed trends in life expectancy and life satisfaction from 2011 to 2023.
--   Europe performed consistently well in both indicators.
--   Asia showed greater variation, some countries lag behind in the two indicators.
--   Balanced improvement in Life Expectancy and life satisfaction is essential
-
-------------------------------------------------------------------------
-
-## Introduction
+## Problem introduction
 
 With advancements in global medicine, public health, and living standards, life expectancy has continued to reach new heights. It is often regarded as a key indicator of people’s well-being. However, the relationship between life expectancy and life satisfaction may vary across countries and regions, influenced by differences in cultural values, economic development, and societal expectations.
 
@@ -47,7 +26,7 @@ With advancements in global medicine, public health, and living standards, life 
 
 ------------------------------------------------------------------------
 
-## Methodology
+## Dataset description
 
 ```{r}
 #| echo: false
@@ -90,6 +69,8 @@ Our dataset was then filtered to contain only observations with values for both 
 
 ------------------------------------------------------------------------
 
+## Methods
+
 ```{r}
 #| label: fig-dist-asia-europe
 #| fig-cap: "Country-Level Distribution Curves of Life Satisfaction and Life Expectancy in Asia and Europe (2023)"
@@ -115,6 +96,8 @@ ggplot(long_data, aes(x = Value, fill = `World regions according to OWID`)) +
 ```
 
 ------------------------------------------------------------------------
+
+## Methods
 
 ```{r}
 #| label: fig-dens-asia-europe
@@ -208,7 +191,7 @@ ggplot(region_avg, aes(
 
 ------------------------------------------------------------------------
 
-## Discussion & Conclusion(1)
+## Conclusion
 
 -   Overall quality of life has improved in both Europe and Asia.
 
@@ -220,9 +203,7 @@ ggplot(region_avg, aes(
 
 ------------------------------------------------------------------------
 
-## Discussion & Conclusion(2)
-
-::: {.tiny}
+## Conclusion
 
 - **World Happiness Report 2020**  
   Europe’s welfare systems support stable improvement in well-being  
@@ -233,8 +214,6 @@ ggplot(region_avg, aes(
   Affected both life expectancy and subjective well-being  
 
 - Europe’s high-welfare models ensure stable outcomes, while Asia still shows clear room for improvement.
-
-:::
 
 ------------------------------------------------------------------------
 
@@ -249,16 +228,6 @@ ggplot(region_avg, aes(
 -   Consider including variables such as occupational inequality, income inequality and educational attainment.
 
 ------------------------------------------------------------------------
-
-## References
-
--   Our World in Data. (n.d.). *Life satisfaction vs. life expectancy*. https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy
-
--   Helliwell, J. F., Layard, R., Sachs, J. D., & De Neve, J. E. (Eds.). (2020). *World happiness report 2020*. Sustainable Development Solutions Network. https://worldhappiness.report/ed/2020/
-
--   Centers for Disease Control and Prevention. (2021). *CDC Museum COVID-19 Timeline*. <https://www.cdc.gov/museum/timeline/covid19.html>
-
-    ## imgflip.com. (n.d.). *Any Questions? Meme*. https://imgflip.com/i/9fmfwa
 
 ## Thank You!
 
