@@ -26,7 +26,7 @@ library(scales)
 -   Recommendations
 -   References
 
----
+------------------------------------------------------------------------
 
 ## Executive Summary
 
@@ -35,7 +35,7 @@ library(scales)
 -   Asia showed greater variation, some countries lag behind in the two indicators.
 -   Balanced improvement in Life Expectancy and life satisfaction is essential
 
----
+------------------------------------------------------------------------
 
 ## Introduction
 
@@ -45,7 +45,7 @@ With advancements in global medicine, public health, and living standards, life 
 
 -   Data Source: [Our World in Data](https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy)
 
----
+------------------------------------------------------------------------
 
 ## Methodology
 
@@ -83,11 +83,12 @@ europe_asia <- read_csv("europe_asia.csv")
 #| fig-cap: "Europe and Asia filtered dataset"
 head(europe_asia[, c("Entity", "Code", "Year", "Cantril ladder score", "Life expectancy (years)")])
 ```
-Our dataset was cleaned to ensure all observations included the 'World regions according to OWID' variable, which was initially onle recorded once. 
+
+Our dataset was cleaned to ensure all observations included the 'World regions according to OWID' variable, which was initially onle recorded once.
 
 Our dataset was then filtered to contain only observations with values for both key metrics, ensuring that missing values did not undermine the analysis.
 
----
+------------------------------------------------------------------------
 
 ```{r}
 #| label: fig-dist-asia-europe
@@ -113,7 +114,7 @@ ggplot(long_data, aes(x = Value, fill = `World regions according to OWID`)) +
     theme_minimal()
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r}
 #| label: fig-dens-asia-europe
@@ -205,21 +206,37 @@ ggplot(region_avg, aes(
   theme_minimal()
 ```
 
----
+------------------------------------------------------------------------
 
-## Discussion & Conclusion
+## Discussion & Conclusion(1)
 
-- Overall quality of life has improved in both Europe and Asia.
+-   Overall quality of life has improved in both Europe and Asia.
 
-- Europe shows steady progress in health and well-being, with more uniform development.
+-   Europe shows steady progress in health and well-being, with more uniform development.
 
-- Asia has wider variation, including extreme cases.
+-   Asia has wider variation, including extreme cases.
 
-- Differences in medical systems, economies, and social support impact well-being.
+-   Differences in medical systems, economies, and social support impact well-being.
+
+------------------------------------------------------------------------
+
+## Discussion & Conclusion(2)
+
+::: {.tiny}
+
+- **World Happiness Report 2020**  
+  Europe’s welfare systems support stable improvement in well-being  
+  Asia’s rapid growth with social pressure leads to more volatility  
+
+- **COVID-19 pandemic (CDC, 2021)**  
+  Decline in both regions linked to the pandemic’s severe impact  
+  Affected both life expectancy and subjective well-being  
 
 - Europe’s high-welfare models ensure stable outcomes, while Asia still shows clear room for improvement.
 
----
+:::
+
+------------------------------------------------------------------------
 
 ## Recommendations
 
@@ -231,15 +248,18 @@ ggplot(region_avg, aes(
 
 -   Consider including variables such as occupational inequality, income inequality and educational attainment.
 
----
+------------------------------------------------------------------------
 
 ## References
 
 -   Our World in Data. (n.d.). *Life satisfaction vs. life expectancy*. https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy
 
--   imgflip.com. (n.d.). *Any Questions? Meme*. https://imgflip.com/i/9fmfwa
----
+-   Helliwell, J. F., Layard, R., Sachs, J. D., & De Neve, J. E. (Eds.). (2020). *World happiness report 2020*. Sustainable Development Solutions Network. https://worldhappiness.report/ed/2020/
+
+-   Centers for Disease Control and Prevention. (2021). *CDC Museum COVID-19 Timeline*. <https://www.cdc.gov/museum/timeline/covid19.html>
+
+    ## imgflip.com. (n.d.). *Any Questions? Meme*. https://imgflip.com/i/9fmfwa
 
 ## Thank You!
 
-<img src="images/meme.jpg" alt="Any Questions?" style="display: block; margin: 0 auto;">
+<img src="images/meme.jpg" alt="Any Questions?" style="display: block; margin: 0 auto;"/>
