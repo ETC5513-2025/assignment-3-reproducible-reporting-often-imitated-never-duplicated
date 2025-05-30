@@ -1,14 +1,24 @@
 ---
-title: "Do Europe and Asia experience similar trends in Life Expectancy and Life Satisfaction?"
-author: "Often Imitated, never depulicated"
+title: "\\textcolor{blue!50!black}{Do Europe and Asia experience similar trends in Life Expectancy and Life Satisfaction?}"
+author: "Often imitated, never duplicated - TingTing Wu, Yilin Zhang, James Gray"
 format:
   pdf:
     toc: true
     number-sections: true
     fig-cap-location: bottom
     link-citations: true
+    mainfont: "Times New Roman"
+    header-includes: |
+      \usepackage{xcolor}
+      \usepackage{sectsty}
+      \usepackage{fancyhdr}
+      \sectionfont{\color{blue!50!black}}
+      \pagestyle{fancy}
+      \fancyhead[L]{\textcolor{blue!50!black}{Comparative Trends in Europe and Asia}}
+      \fancyhead[R]{}
 execute:
-  echo: true
+  echo: false
+  warning: false
 ---
 
 ```{r}
@@ -111,9 +121,11 @@ ggplot(long_data, aes(x = Value, fill = `World regions according to OWID`)) +
 
 # Results
 
-@fig-trend-asia-europe presents population-weighted yearly averages of life satisfaction and life expectancy in Asia and Europe from 2011 to 2023. This approach gives more weight to countries with larger populations and offers a clearer view of how the average individual in each region experiences changes in health and well-being.
+@fig-trend-asia-europe illustrates the trajectory of population-weighted yearly averages for life satisfaction and life expectancy in Asia and Europe from 2011 to 2023. The use of population-weighted averages provides a clearer understanding of how the average individual in each region experiences changes in these key indicators, ensuring that larger populations contribute more significantly to regional trends.
 
-Europe consistently reported higher values for both indicators. Life expectancy followed a steady upward trend until 2020, with a slight drop afterward, while life satisfaction remained relatively stable. In contrast, Asia showed more fluctuation, with a notable shift in 2019 where both indicators changed direction. Interestingly, the life satisfaction trends for Asia and Europe were almost opposite before 2019, even though they showed similar patterns in 2010 and 2012. However, in terms of life expectancy, they shared similar patterns, including the decline seen in 2021. By 2023, both regions had reached their highest life expectancy levels.
+Throughout this period, Europe consistently reported higher average values for both life satisfaction and life expectancy. In contrast, Asia displayed more volatility, with a notable turning point in 2019, where both indicators shifted significantly. A closer examination of life satisfaction trends reveals an almost inverse relationship between the two regions prior to 2019. In Asia, life satisfaction exhibited a upward trend until 2012, followed by a decline until 2019, before rising sharply from 2019 to 2023. Conversely, Europe experienced an decline, but steadily improved thereafter, achieving a relatively stable level by 2023.
+
+Regarding life expectancy, both regions shared similar patterns, characterized by a steady upward trajectory until 2019, a decline between 2020 and 2021, and reaching their highest levels by 2023.
 
 1.  Calculate population-weighted regional averages
 
@@ -203,4 +215,24 @@ Recommendations:
 
 # References
 
--   United Nations. (2024). *World Population Prospects* \[Dataset\]. Processed by Our World in Data. Available at: <https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy>
+-   Our World in Data. (n.d.). *Life satisfaction vs. life expectancy*. <https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy>
+
+-   Helliwell, J. F., Layard, R., Sachs, J. D., & De Neve, J. E. (Eds.). (2020). *World happiness report 2020*. Sustainable Development Solutions Network. <https://worldhappiness.report/ed/2020/>
+
+-   Centers for Disease Control and Prevention. (2021). *CDC Museum COVID-19 Timeline*. <https://www.cdc.gov/museum/timeline/covid19.html>
+
+-   imgflip.com. (n.d.). *Any Questions? Meme*. <https://imgflip.com/i/9fmfwa>
+
+# Citations
+
+-   Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., & RStudio. (2024). ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics (Version 3.5.1). <https://CRAN.R-project.org/package=ggplot2>
+
+-   Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. <https://doi.org/10.21105/joss.01686>
+
+-   Xie, Y. (2024). knitr: A General-Purpose Package for Dynamic Report Generation in R (Version 1.45). <https://CRAN.R-project.org/package=knitr>
+
+-   Pedersen, T. L. (2023). scales: Scale Functions for Visualization (Version 1.3.0). <https://CRAN.R-project.org/package=scales>
+
+-   Hadley Wickham et al. (2023). dplyr: A Grammar of Data Manipulation (Version 1.1.4). <https://CRAN.R-project.org/package=dplyr>
+
+-   Viridis color maps – Garnier, S. (2021). viridis: Colorblind-Friendly Color Maps for R (Version 0.6.2). <https://CRAN.R-project.org/package=viridis>
