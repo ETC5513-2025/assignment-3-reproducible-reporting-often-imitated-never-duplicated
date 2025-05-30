@@ -1,20 +1,14 @@
 # Comparative Trends in Life Expectancy and Life Satisfaction in Europe and Asia (2011–2023)
 
----
-
 This repository contains a reproducible report analyzing trends in **life expectancy** and **life satisfaction** in **Europe** and **Asia** from **2011 to 2023**. The analysis leverages population-weighted averages and compares patterns between the two regions.
 
 ## Members
-
----
 
 - TingTing Wu
 - Yilin Zhang
 - James Gray
 
 ## 📄 Report Overview
-
----
 
 - **Key questions**: Are there similar trends in life expectancy and life satisfaction between Europe and Asia?
 - **Data source**: [Our World in Data](https://ourworldindata.org/grapher/life-satisfaction-vs-life-expectancy)
@@ -24,15 +18,11 @@ This repository contains a reproducible report analyzing trends in **life expect
 
 ## 📊 Key Visualizations
 
----
-
 - Distribution curves of life expectancy and life satisfaction (2023)
 - Density map comparing Europe and Asia (2023)
 - Trajectories of weighted regional averages (2011–2023)
 
 ## 📦 Folder Structure
-
----
 
 ```
 .
@@ -58,8 +48,6 @@ This repository contains a reproducible report analyzing trends in **life expect
 
 ## ⚙️ Prerequisites
 
----
-
 Before running this project, ensure that you have the following installed on your system:
 
 - R (version 4.x or later): The main programming language used for data analysis and visualization.
@@ -77,7 +65,5 @@ renv::restore()
 ```
 
 ## 📜 License
-
----
 
 This project is licensed under the terms of the MIT License. You are free to use, modify, and distribute the materials in this repository, provided you include proper attribution and the license terms in derivative works.
