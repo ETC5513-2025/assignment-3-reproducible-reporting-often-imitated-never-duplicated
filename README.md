@@ -2,7 +2,7 @@
 
 This repository contains a reproducible report analyzing trends in **life expectancy** and **life satisfaction** in **Europe** and **Asia** from **2011 to 2023**. The analysis leverages population-weighted averages and compares patterns between the two regions.
 
-## Members
+## 👥 Members
 
 - TingTing Wu
 - Yilin Zhang
